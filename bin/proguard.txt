@@ -1,0 +1,6 @@
+# view res/layout/main.xml #generated:35
+-keep class ac.uk.emr.greg.Android_Test.GameBoard { <init>(...); }
+
+# view AndroidManifest.xml #generated:13
+-keep class ac.uk.emr.greg.Android_Test.Main { <init>(...); }
+
