@@ -41,8 +41,30 @@ public class GameBoard extends View{
     
     private void initializeStars(int maxX, int maxY) {
         starField = new ArrayList<Point>();
+public class GameBoard extends View{
+
+    private Paint p;
+    private List<Point> starField = null;
+    private List<Integer> starBright = null;
+    private List<Integer> starFadeList = null;
+    private List<Integer> starSize = null;
+    private int starAlpha = 80;
+    
+    private int starFade = 2;
+    private static final int NUM_OF_STARS = 25;
+                
+    public GameBoard(Context context, AttributeSet aSet) {
+        super(context, aSet);
+        //it's best not to create any new objects in the on draw
+        //initialize them as class variables here
+        p = new Paint();
+    }
+    
+    private void initializeStars(int maxX, int maxY) {
+        starField = new ArrayList<Point>();
         starBright = new ArrayList<Integer>();
         starFadeList = new ArrayList<Integer>();
+        starSize = new ArrayList<Integer>();
         for (int i=0; i<NUM_OF_STARS; i++) {
                 Random r = new Random();
                 int x = r.nextInt(maxX-5+1)+5;
@@ -52,6 +74,7 @@ public class GameBoard extends View{
                 starBright.add(rn);
                 int rs = r.nextInt(3) - 6;
                 starFadeList.add(rs);
+                starSize.add(r.nextInt(6)+2);
          }
     }
     
@@ -82,10 +105,10 @@ public class GameBoard extends View{
             starFadeList.set(count,starFade);
            
             p.setAlpha(starAlpha);
-            p.setStrokeWidth(5);
-           // for (int ii=0; ii<NUM_OF_STARS; ii++) {
-                canvas.drawPoint(starField.get(count).x, starField.get(count).y, p);
-           // }
+            p.setStrokeWidth(starSize.get(count));
+           
+            canvas.drawPoint(starField.get(count).x, starField.get(count).y, p);
+           
             count++;
         }
         //p.setAlpha(starAlpha+=starFade);
