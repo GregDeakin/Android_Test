@@ -27,26 +27,6 @@ public class GameBoard extends View{
     private List<Point> starField = null;
     private List<Integer> starBright = null;
     private List<Integer> starFadeList = null;
-    private int starAlpha = 80;
-    
-    private int starFade = 2;
-    private static final int NUM_OF_STARS = 25;
-                
-    public GameBoard(Context context, AttributeSet aSet) {
-        super(context, aSet);
-        //it's best not to create any new objects in the on draw
-        //initialize them as class variables here
-        p = new Paint();
-    }
-    
-    private void initializeStars(int maxX, int maxY) {
-        starField = new ArrayList<Point>();
-public class GameBoard extends View{
-
-    private Paint p;
-    private List<Point> starField = null;
-    private List<Integer> starBright = null;
-    private List<Integer> starFadeList = null;
     private List<Integer> starSize = null;
     private int starAlpha = 80;
     
